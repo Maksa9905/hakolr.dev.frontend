@@ -1,11 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react'
-import {
-  AsideMenuBackdrop,
-  AsideMenuButton,
-  AsideMenuContainer,
-} from './AsideMenu.styled'
+import { AsideMenuBackdrop, AsideMenuContainer } from './AsideMenu.styled'
 import { createPortal } from 'react-dom'
-import { MenuIcon } from '@/shared/icons'
 
 type AsideMenuProps = {
   className?: string
@@ -26,16 +21,16 @@ const AsideMenu = ({
     setMounted(true)
   }, [])
 
-  if (!mounted) return null
-
-  const backdrop = createPortal(
-    <AsideMenuBackdrop
-      onClick={onClose}
-      $isOpen={isOpen}
-    />,
-    document.body,
-    'aside-menu-backdrop',
-  )
+  const backdrop = mounted
+    ? createPortal(
+        <AsideMenuBackdrop
+          onClick={onClose}
+          $isOpen={isOpen}
+        />,
+        document.body,
+        'aside-menu-backdrop',
+      )
+    : null
 
   return (
     <>
@@ -46,9 +41,6 @@ const AsideMenu = ({
         {children}
         {backdrop}
       </AsideMenuContainer>
-      <AsideMenuButton onClick={onClose}>
-        <MenuIcon />
-      </AsideMenuButton>
     </>
   )
 }

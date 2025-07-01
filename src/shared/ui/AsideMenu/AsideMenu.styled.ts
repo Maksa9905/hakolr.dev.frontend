@@ -11,8 +11,6 @@ export const AsideMenuContainer = styled.aside<{ $isOpen: boolean }>`
   padding: 36px;
   background-color: ${({ theme }) => theme.palette.white};
   z-index: 1000;
-  transform: ${({ $isOpen }) =>
-    $isOpen ? 'translateX(0)' : 'translateX(-100%)'};
 
   transition: transform 0.3s ease;
 

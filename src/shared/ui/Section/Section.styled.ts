@@ -13,12 +13,15 @@ export const SectionContainer = styled.section<{ $flex?: number }>`
 export const SectionContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 16px;
   padding: 16px;
   border: 2px dashed ${({ theme }) => theme.palette.black};
   height: 100%;
   box-sizing: border-box;
+
+  @media (max-width: 1080px) {
+    gap: 8px;
+  }
 `
 
 export const SectionTitle = styled(Typography)`

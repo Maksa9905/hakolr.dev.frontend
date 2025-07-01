@@ -22,5 +22,6 @@ export const DeveloperInfo = styled.div`
 
   @media (max-width: 1080px) {
     flex-direction: row;
+    gap: 8px;
   }
 `

@@ -13,7 +13,7 @@ export const AboutMeSectionContainer = styled(Section)`
   min-width: 600px;
 
   @media (max-width: 768px) {
-    min-width: 360px;
+    min-width: 330px;
   }
 
   @media (max-width: 600px) {

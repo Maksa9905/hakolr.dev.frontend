@@ -35,6 +35,16 @@ export const NavigationItem = styled(Typography)<{ $active?: boolean }>`
   > a {
     text-decoration: none;
     color: inherit;
+
+    &:focus {
+      padding: 5px;
+      outline: 2px dashed ${({ theme }) => theme.palette.black};
+    }
+
+    &:active {
+      padding: 0;
+      outline: none;
+    }
   }
 
   transition: all 0.1s ease;

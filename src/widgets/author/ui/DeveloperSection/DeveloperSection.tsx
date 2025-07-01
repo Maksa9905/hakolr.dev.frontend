@@ -11,11 +11,11 @@ const DeveloperSection = () => {
     >
       <DeveloperInfo>
         <InfoTitle
-          value="2 года"
+          value="1 год"
           label="коммерческого опыта во фронте"
         />
         <InfoTitle
-          value="2.5 года"
+          value="1.5 года"
           label="опыта во фронте вцелом"
         />
       </DeveloperInfo>
