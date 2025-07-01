@@ -20,6 +20,37 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## CI/CD
+
+Проект настроен с GitHub Actions для автоматической проверки кода:
+
+- **CI Pipeline** (`.github/workflows/ci.yml`): Запускается при каждом pull request и push в main
+  - Проверка типов TypeScript (`npx tsc --noEmit`)
+  - Проверка линтера (`npm run lint`)
+  - Сборка проекта (`npm run build`)
+  - Тестирование на Node.js 18.x и 20.x
+
+- **Docker Pipeline** (`.github/workflows/docker.yml`): Автоматически собирает и публикует Docker образ
+  - Сборка Docker образа при push в main
+  - Публикация в GitHub Container Registry
+
+## Docker
+
+Для запуска приложения в Docker контейнере:
+
+```bash
+# Сборка образа
+docker build -t hakolr-blog .
+
+# Запуск контейнера
+docker run -p 3000:3000 hakolr-blog
+
+# Или используйте docker-compose
+docker-compose up --build
+```
+
+Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000).
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
