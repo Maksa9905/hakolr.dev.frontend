@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { StyledNavigation } from './Navigation.styled'
+import S from './Navigation.styled'
 import { useNavigationLinks } from '@/entities/navigation'
 
 type NavigationProps = {
@@ -13,9 +13,9 @@ const Navigation = ({ className, onClick }: NavigationProps) => {
   const links = useNavigationLinks()
 
   return (
-    <StyledNavigation.Container className={className}>
+    <S.Container className={className}>
       {links.map((link) => (
-        <StyledNavigation.MenuItem
+        <S.MenuItem
           key={link.href}
           $active={link.isActive}
         >
@@ -25,9 +25,9 @@ const Navigation = ({ className, onClick }: NavigationProps) => {
           >
             {link.label}
           </Link>
-        </StyledNavigation.MenuItem>
+        </S.MenuItem>
       ))}
-    </StyledNavigation.Container>
+    </S.Container>
   )
 }
 
