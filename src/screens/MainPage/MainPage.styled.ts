@@ -2,7 +2,7 @@
 
 import styled from 'styled-components'
 
-export const MainContainer = styled.main`
+const Container = styled.main`
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -21,3 +21,9 @@ export const MainContainer = styled.main`
     max-width: 100%;
   }
 `
+
+const StyledMainPage = {
+  Container,
+}
+
+export default StyledMainPage

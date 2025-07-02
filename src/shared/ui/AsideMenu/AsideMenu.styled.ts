@@ -2,7 +2,7 @@
 
 import styled from 'styled-components'
 
-export const AsideMenuContainer = styled.aside<{ $isOpen: boolean }>`
+const Container = styled.aside<{ $isOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@ export const AsideMenuContainer = styled.aside<{ $isOpen: boolean }>`
   }
 `
 
-export const AsideMenuBackdrop = styled.div<{ $isOpen: boolean }>`
+const Backdrop = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -32,24 +32,9 @@ export const AsideMenuBackdrop = styled.div<{ $isOpen: boolean }>`
   pointer-events: ${({ $isOpen }) => ($isOpen ? 'auto' : 'none')};
 `
 
-export const AsideMenuButton = styled.button`
-  position: absolute;
-  top: 64px;
-  right: 36px;
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+const StyledAsideMenu = {
+  Container,
+  Backdrop,
+}
 
-  @media (min-width: 1440px) {
-    display: none;
-  }
-
-  @media (max-width: 480px) {
-    top: 32px;
-    right: 16px;
-    width: 28px;
-    height: 28px;
-  }
-`
+export default StyledAsideMenu

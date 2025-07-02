@@ -1,10 +1,6 @@
 import { useUnit } from 'effector-react'
 import { $asideMenuOpened, toggleAsideMenu } from '../model/model'
-import {
-  StyledAsideMenu,
-  StyledNavigation,
-  MenuToggleButton,
-} from './AsideMenu.styled'
+import S from './AsideMenu.styled'
 import { MenuIcon } from '@/shared/icons'
 
 const AsideMenu = () => {
@@ -12,18 +8,18 @@ const AsideMenu = () => {
   const toggleMenu = useUnit(toggleAsideMenu)
 
   return (
-    <StyledAsideMenu
+    <S.Container
       $isOpen={isOpen}
       isOpen={isOpen}
       onClose={toggleMenu}
     >
-      <StyledNavigation onClick={toggleMenu} />
+      <S.Navgation onClick={toggleMenu} />
       {!isOpen && (
-        <MenuToggleButton onClick={toggleMenu}>
+        <S.ToggleButton onClick={toggleMenu}>
           <MenuIcon />
-        </MenuToggleButton>
+        </S.ToggleButton>
       )}
-    </StyledAsideMenu>
+    </S.Container>
   )
 }
 

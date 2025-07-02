@@ -1,23 +1,19 @@
-import { Section } from '@/shared/ui'
-import { MusicSectionInfoTitle } from './MusicSection.styled'
+import S from './MusicSection.styled'
 
 const MusicSection = () => {
   return (
-    <Section
-      title="Музыка"
-      flex={10}
-    >
-      <MusicSectionInfoTitle value="de4lt">
+    <S.Container title="Музыка">
+      <S.MusicInfoTitle value="de4lt">
         соло-гитара <br /> бэк-вокалист
-      </MusicSectionInfoTitle>
-      <MusicSectionInfoTitle value="самочувствие">
+      </S.MusicInfoTitle>
+      <S.MusicInfoTitle value="самочувствие">
         основная <br /> гитара
-      </MusicSectionInfoTitle>
-      <MusicSectionInfoTitle
+      </S.MusicInfoTitle>
+      <S.MusicInfoTitle
         value="вызов завершён"
         label="вокалист и сонграйтер"
       />
-    </Section>
+    </S.Container>
   )
 }
 

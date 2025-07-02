@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
+import NextLink from 'next/link'
 import styled from 'styled-components'
 
-export const FooterContainer = styled.footer`
+const Container = styled.footer`
   gap: 8px;
 
   display: grid;
@@ -11,7 +11,12 @@ export const FooterContainer = styled.footer`
   grid-template-rows: repeat(2, 1fr);
 `
 
-export const StyledLink = styled(Link)<{ $column: string; $row: string }>`
+const Link = styled(NextLink)<{ $column: string; $row: string }>`
   grid-column: ${({ $column }) => $column};
   grid-row: ${({ $row }) => $row};
 `
+
+export const StyledFooter = {
+  Container,
+  Link,
+}

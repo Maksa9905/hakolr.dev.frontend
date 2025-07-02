@@ -7,20 +7,20 @@ import {
   Header,
   MusicSection,
 } from '@/widgets/author'
-import { LatestPostsSection } from '@/widgets/posts'
-import { MainContainer } from './MainPage.styled'
+import { LatestPublicationSection } from '@/widgets/publications'
+import S from './MainPage.styled'
 
 const MainPage = () => {
   return (
     <>
       <Header />
-      <MainContainer>
+      <S.Container>
         <DeveloperSection />
         <MusicSection />
         <AboutMeSection />
         <AboutSiteSection />
-        <LatestPostsSection />
-      </MainContainer>
+        <LatestPublicationSection />
+      </S.Container>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react'
-import { AsideMenuBackdrop, AsideMenuContainer } from './AsideMenu.styled'
+import S from './AsideMenu.styled'
 import { createPortal } from 'react-dom'
 
 type AsideMenuProps = {
@@ -23,7 +23,7 @@ const AsideMenu = ({
 
   const backdrop = mounted
     ? createPortal(
-        <AsideMenuBackdrop
+        <S.Backdrop
           onClick={onClose}
           $isOpen={isOpen}
         />,
@@ -34,13 +34,13 @@ const AsideMenu = ({
 
   return (
     <>
-      <AsideMenuContainer
+      <S.Container
         className={className}
         $isOpen={isOpen}
       >
         {children}
         {backdrop}
-      </AsideMenuContainer>
+      </S.Container>
     </>
   )
 }

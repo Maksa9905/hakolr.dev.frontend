@@ -3,17 +3,14 @@ import StyledComponentsRegistry from '@/shared/lib/registry'
 import CommonLayout from '@/screens/RootLayout'
 
 import '@/application/global.css'
+import { PropsWithChildren } from 'react'
 
 export const metadata: Metadata = {
   title: 'Максим Гайворонский',
   description: 'Разработчик веб-интерфейсов',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ru">
       <body style={{ fontFamily: 'Martian Grotesk' }}>

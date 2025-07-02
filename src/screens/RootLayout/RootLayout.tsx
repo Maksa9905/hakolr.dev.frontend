@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { StyledFooter, StyledNavigation } from './RootLayout.styled'
+import S from './RootLayout.styled'
 import { AsideMenu } from '@/widgets/aside-menu'
 
 type RootLayoutProps = {
@@ -11,9 +11,9 @@ type RootLayoutProps = {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <>
-      <StyledNavigation />
+      <S.Navigation />
       {children}
-      <StyledFooter />
+      <S.Footer />
       <AsideMenu />
     </>
   )

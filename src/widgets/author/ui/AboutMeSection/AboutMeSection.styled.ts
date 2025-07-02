@@ -2,15 +2,16 @@
 
 import { Section, Typography } from '@/shared/ui'
 import { SectionContent } from '@/shared/ui/Section'
-import Image from 'next/image'
+import NextImage from 'next/image'
 import styled from 'styled-components'
 
-export const AboutMeSectionContainer = styled(Section)`
+const Container = styled(Section)`
   ${SectionContent} {
     display: block;
   }
 
   min-width: 600px;
+  flex: 10;
 
   @media (max-width: 768px) {
     min-width: 330px;
@@ -24,13 +25,13 @@ export const AboutMeSectionContainer = styled(Section)`
   }
 `
 
-export const AboutMeSectionTitle = styled(Typography)`
+const Title = styled(Typography)`
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 28px;
 `
 
-export const AboutMeSectionParagraph = styled(Typography)`
+const Paragraph = styled(Typography)`
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 28px;
@@ -40,7 +41,7 @@ export const AboutMeSectionParagraph = styled(Typography)`
   }
 `
 
-export const AboutMeSectionImage = styled(Image)`
+const Image = styled(NextImage)`
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -55,3 +56,12 @@ export const AboutMeSectionImage = styled(Image)`
     grid-row: 3;
   }
 `
+
+const StyledAboutMeSection = {
+  Container,
+  Title,
+  Paragraph,
+  Image,
+}
+
+export default StyledAboutMeSection

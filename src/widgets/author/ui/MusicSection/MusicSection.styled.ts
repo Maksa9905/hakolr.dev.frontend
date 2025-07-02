@@ -1,14 +1,21 @@
 import { InfoTitle, Section } from '@/shared/ui'
 import styled from 'styled-components'
 
-export const MusicSectionContainer = styled(Section)`
-  min-width: 500px;
+const Container = styled(Section)`
+  flex: 10;
 `
 
-export const MusicSectionInfoTitle = styled(InfoTitle)`
+const MusicInfoTitle = styled(InfoTitle)`
   @media (max-width: 480px) {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
   }
 `
+
+const StyledMusicSection = {
+  Container,
+  MusicInfoTitle,
+}
+
+export default StyledMusicSection

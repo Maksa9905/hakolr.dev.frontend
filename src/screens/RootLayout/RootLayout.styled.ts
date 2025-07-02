@@ -4,7 +4,7 @@ import { Navigation } from '@/widgets/navigation'
 import { Footer } from '@/widgets/footer'
 import styled from 'styled-components'
 
-export const StyledNavigation = styled(Navigation)`
+const StyledNavigation = styled(Navigation)`
   width: calc((100vw - 1010px) / 2 - 100px);
   position: fixed;
   top: 64px;
@@ -19,7 +19,7 @@ export const StyledNavigation = styled(Navigation)`
   }
 `
 
-export const StyledFooter = styled(Footer)`
+const StyledFooter = styled(Footer)`
   position: fixed;
   bottom: 36px;
   left: 36px;
@@ -28,3 +28,10 @@ export const StyledFooter = styled(Footer)`
     display: none;
   }
 `
+
+const StyledRootLayout = {
+  Navigation: StyledNavigation,
+  Footer: StyledFooter,
+}
+
+export default StyledRootLayout

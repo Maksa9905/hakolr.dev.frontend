@@ -3,8 +3,7 @@
 import { Typography } from '@/shared/ui'
 import styled from 'styled-components'
 
-export const SectionContainer = styled.section<{ $flex?: number }>`
-  ${({ $flex }) => $flex && `flex: ${$flex};`}
+export const SectionContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 8px;

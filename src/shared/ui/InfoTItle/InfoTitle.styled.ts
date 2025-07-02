@@ -3,21 +3,21 @@
 import styled from 'styled-components'
 import { Typography } from '..'
 
-export const InfoTitleContainer = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 8px;
 `
 
-export const InfoTitleLabel = styled(Typography)`
+const Label = styled(Typography)`
   max-width: 160px;
   font-size: 16px;
   font-weight: 400;
   line-height: 16px;
 `
 
-export const InfoTitleValue = styled(Typography)`
+const Value = styled(Typography)`
   font-size: 36px;
   font-weight: 700;
   text-transform: uppercase;
@@ -31,3 +31,11 @@ export const InfoTitleValue = styled(Typography)`
     font-size: 24px;
   }
 `
+
+const StyledInfoTitle = {
+  Container,
+  Label,
+  Value,
+}
+
+export default StyledInfoTitle

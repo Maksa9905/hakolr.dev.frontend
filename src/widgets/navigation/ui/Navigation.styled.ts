@@ -3,7 +3,7 @@
 import { Typography } from '@/shared/ui'
 import styled from 'styled-components'
 
-export const NavigationContainer = styled.nav`
+export const Container = styled.nav`
   width: 100%;
 
   display: flex;
@@ -11,7 +11,7 @@ export const NavigationContainer = styled.nav`
   gap: 28px;
 `
 
-export const NavigationItem = styled(Typography)<{ $active?: boolean }>`
+export const MenuItem = styled(Typography)<{ $active?: boolean }>`
   font-size: 18px;
   font-weight: 400;
   color: ${({ theme, $active }) =>
@@ -49,3 +49,8 @@ export const NavigationItem = styled(Typography)<{ $active?: boolean }>`
 
   transition: all 0.1s ease;
 `
+
+export const StyledNavigation = {
+  Container,
+  MenuItem,
+}

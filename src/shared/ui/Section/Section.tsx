@@ -8,16 +8,12 @@ import {
 type SectionProps = {
   title: string
   children: ReactNode
-  flex?: number
   className?: string
 }
 
-const Section = ({ title, flex, children, className }: SectionProps) => {
+const Section = ({ title, children, className }: SectionProps) => {
   return (
-    <SectionContainer
-      $flex={flex}
-      className={className}
-    >
+    <SectionContainer className={className}>
       <SectionTitle component="h2">{title}</SectionTitle>
       <SectionContent>{children}</SectionContent>
     </SectionContainer>

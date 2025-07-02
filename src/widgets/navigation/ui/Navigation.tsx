@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { NavigationContainer, NavigationItem } from './Navigation.styled'
-import { useNavigationLinks } from '@/widgets/navigation'
+import { StyledNavigation } from './Navigation.styled'
+import { useNavigationLinks } from '@/entities/navigation'
 
 type NavigationProps = {
   className?: string
@@ -13,21 +13,21 @@ const Navigation = ({ className, onClick }: NavigationProps) => {
   const links = useNavigationLinks()
 
   return (
-    <NavigationContainer className={className}>
-      {links.map(({ label, href, isActive }) => (
-        <NavigationItem
-          key={href}
-          $active={isActive}
+    <StyledNavigation.Container className={className}>
+      {links.map((link) => (
+        <StyledNavigation.MenuItem
+          key={link.href}
+          $active={link.isActive}
         >
           <Link
-            href={href}
-            onClick={() => onClick?.(href)}
+            href={link.href}
+            onClick={() => onClick?.(link.href)}
           >
-            {label}
+            {link.label}
           </Link>
-        </NavigationItem>
+        </StyledNavigation.MenuItem>
       ))}
-    </NavigationContainer>
+    </StyledNavigation.Container>
   )
 }
 

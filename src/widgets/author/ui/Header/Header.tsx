@@ -1,17 +1,13 @@
-import {
-  HeaderContainer,
-  HeaderDescription,
-  HeaderTitle,
-} from './Header.styled'
+import S from './Header.styled'
 
 const Header = () => {
   return (
-    <HeaderContainer>
-      <HeaderTitle component="h1">Максим Гайворонский</HeaderTitle>
-      <HeaderDescription component="p">
+    <S.Container>
+      <S.Title component="h1">Максим Гайворонский</S.Title>
+      <S.Description component="p">
         Frontend-разработчик · Кавер-исполнитель
-      </HeaderDescription>
-    </HeaderContainer>
+      </S.Description>
+    </S.Container>
   )
 }
 

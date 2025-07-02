@@ -1,7 +1,11 @@
-import { Typography } from '@/shared/ui'
+import { Section, Typography } from '@/shared/ui'
 import styled from 'styled-components'
 
-export const SkillsTypography = styled(Typography)`
+const Container = styled(Section)`
+  flex: 7.65;
+`
+
+const SkillsTypography = styled(Typography)`
   font-size: 12px;
   line-height: 13px;
   min-width: 370px;
@@ -14,7 +18,7 @@ export const SkillsTypography = styled(Typography)`
   }
 `
 
-export const DeveloperInfo = styled.div`
+const DeveloperInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -25,3 +29,11 @@ export const DeveloperInfo = styled.div`
     gap: 8px;
   }
 `
+
+const StyledDeveloperSection = {
+  Container,
+  SkillsTypography,
+  DeveloperInfo,
+}
+
+export default StyledDeveloperSection

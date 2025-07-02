@@ -4,7 +4,7 @@ import { Section, Typography } from '@/shared/ui'
 import { SectionContent } from '@/shared/ui/Section'
 import styled from 'styled-components'
 
-export const LatestPostsSectionContainer = styled(Section)`
+const SectionContainer = styled(Section)`
   ${SectionContent} {
     padding: 0%;
     display: grid;
@@ -19,7 +19,7 @@ export const LatestPostsSectionContainer = styled(Section)`
   }
 `
 
-export const LatestPostsItemContainer = styled.article`
+const CardContainer = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -41,7 +41,7 @@ export const LatestPostsItemContainer = styled.article`
   }
 `
 
-export const LatestPostItemTitle = styled(Typography)`
+const CardTitle = styled(Typography)`
   font-size: 28px;
   font-weight: 700;
   line-height: 25px;
@@ -58,7 +58,7 @@ export const LatestPostItemTitle = styled(Typography)`
   }
 `
 
-export const LatestPostItemParagraph = styled(Typography)`
+const CardParagraph = styled(Typography)`
   font-size: 16px;
   font-weight: 400;
   overflow: hidden;
@@ -68,9 +68,20 @@ export const LatestPostItemParagraph = styled(Typography)`
   -webkit-box-orient: vertical;
 `
 
-export const LatestPostItemDatetime = styled(Typography)`
+const CardDatetime = styled(Typography)`
   align-self: flex-end;
   font-size: 18px;
   font-weight: 400;
   color: ${({ theme }) => theme.palette.gray};
 `
+
+export const StyledSection = {
+  Container: SectionContainer,
+}
+
+export const StyledCard = {
+  Container: CardContainer,
+  Title: CardTitle,
+  Paragraph: CardParagraph,
+  Datetime: CardDatetime,
+}

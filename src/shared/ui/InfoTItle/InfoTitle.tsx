@@ -1,9 +1,5 @@
 import { ReactNode } from 'react'
-import {
-  InfoTitleContainer,
-  InfoTitleLabel,
-  InfoTitleValue,
-} from './InfoTitle.styled'
+import S from './InfoTitle.styled'
 
 type InfoTitleProps = {
   value: string
@@ -14,11 +10,11 @@ type InfoTitleProps = {
 
 const InfoTitle = ({ value, label, children, className }: InfoTitleProps) => {
   return (
-    <InfoTitleContainer className={className}>
-      <InfoTitleValue $isUppercase>{value}</InfoTitleValue>
-      {children && <InfoTitleLabel>{children}</InfoTitleLabel>}
-      <InfoTitleLabel>{label}</InfoTitleLabel>
-    </InfoTitleContainer>
+    <S.Container className={className}>
+      <S.Value $isUppercase>{value}</S.Value>
+      {children && <S.Label>{children}</S.Label>}
+      <S.Label>{label}</S.Label>
+    </S.Container>
   )
 }
 

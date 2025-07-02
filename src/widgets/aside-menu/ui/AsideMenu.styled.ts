@@ -4,11 +4,11 @@ import { AsideMenu } from '@/shared/ui'
 import { Navigation } from '@/widgets/navigation'
 import styled, { css } from 'styled-components'
 
-export const StyledNavigation = styled(Navigation)`
+const StyledNavigation = styled(Navigation)`
   width: 100%;
 `
 
-export const MenuToggleButton = styled.button`
+const ToggleButton = styled.button`
   position: absolute;
   top: 0;
   left: 0;
@@ -96,7 +96,7 @@ const ClosedAsideMenu = css`
   }
 `
 
-export const StyledAsideMenu = styled(AsideMenu)<{ $isOpen: boolean }>`
+const Container = styled(AsideMenu)<{ $isOpen: boolean }>`
   transition: all 0.4s ease;
 
   ${StyledNavigation} {
@@ -110,3 +110,11 @@ export const StyledAsideMenu = styled(AsideMenu)<{ $isOpen: boolean }>`
     display: none;
   }
 `
+
+const StyledAsideMenu = {
+  Container,
+  ToggleButton,
+  Navgation: StyledNavigation,
+}
+
+export default StyledAsideMenu
