@@ -3,7 +3,7 @@
 import { Typography } from '@/shared/ui'
 import styled from 'styled-components'
 
-const Container = styled.header`
+export const HeaderContainer = styled.header`
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -32,7 +32,7 @@ const Container = styled.header`
   }
 `
 
-const Title = styled(Typography)`
+export const HeaderTitle = styled(Typography)`
   font-weight: 700;
   font-size: 70px;
   line-height: 65px;
@@ -48,7 +48,7 @@ const Title = styled(Typography)`
   }
 `
 
-const Description = styled(Typography)`
+export const HeaderDescription = styled(Typography)`
   font-size: 24px;
   font-weight: 700;
   color: ${({ theme }) => theme.palette.gray};
@@ -68,11 +68,3 @@ const Description = styled(Typography)`
     white-space: normal;
   }
 `
-
-const StyledHeader = {
-  Container,
-  Title,
-  Description,
-}
-
-export default StyledHeader

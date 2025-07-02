@@ -2,7 +2,7 @@
 
 import styled from 'styled-components'
 
-const Container = styled.main`
+export const StyledPageContainer = styled.main`
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -21,9 +21,3 @@ const Container = styled.main`
     max-width: 100%;
   }
 `
-
-const StyledMainPage = {
-  Container,
-}
-
-export default StyledMainPage

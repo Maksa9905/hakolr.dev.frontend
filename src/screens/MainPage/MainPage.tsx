@@ -4,23 +4,26 @@ import {
   AboutMeSection,
   AboutSiteSection,
   DeveloperSection,
-  Header,
   MusicSection,
 } from '@/widgets/author'
 import { LatestPublicationSection } from '@/widgets/publications'
-import S from './MainPage.styled'
+import { Header } from '@/widgets/header'
+import { PageContainer } from '@/widgets/page-container'
 
 const MainPage = () => {
   return (
     <>
-      <Header />
-      <S.Container>
+      <Header
+        title="Максим Гайворонский"
+        description="Frontend-разработчик · Кавер-исполнитель"
+      />
+      <PageContainer>
         <DeveloperSection />
         <MusicSection />
         <AboutMeSection />
         <AboutSiteSection />
         <LatestPublicationSection />
-      </S.Container>
+      </PageContainer>
     </>
   )
 }
