@@ -11,7 +11,7 @@ type InfoTitleProps = {
 const InfoTitle = ({ value, label, children, className }: InfoTitleProps) => {
   return (
     <S.Container className={className}>
-      <S.Value $isUppercase>{value}</S.Value>
+      <S.Value $trimmedTo="word">{value}</S.Value>
       {children && <S.Label>{children}</S.Label>}
       <S.Label>{label}</S.Label>
     </S.Container>

@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode, useEffect, useState } from 'react'
 import S from './AsideMenu.styled'
 import { createPortal } from 'react-dom'

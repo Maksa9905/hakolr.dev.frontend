@@ -1,5 +1,5 @@
 import PublicationsPage from '@/screens/PublicationsPage'
 
-export default function Home() {
+export default function Publications() {
   return <PublicationsPage />
 }

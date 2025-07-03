@@ -1,5 +1,10 @@
 import { useDateTransform } from '@/entities/publication'
-import { StyledCard } from './LatestPublicationSection.styled'
+import {
+  CardContainer,
+  CardDatetime,
+  CardParagraph,
+  CardTitle,
+} from './LatestPublicationSection.styled'
 
 type LatestPublicationCardProps = {
   title: string
@@ -15,23 +20,23 @@ const LatestPublicationCard = ({
   const transformedDatetime = useDateTransform(datetime)
 
   return (
-    <StyledCard.Container>
-      <StyledCard.Title
-        $isUppercase
+    <CardContainer>
+      <CardTitle
+        $trimmedTo="word"
         component="h3"
       >
         {title}
-      </StyledCard.Title>
-      <StyledCard.Paragraph
-        $isUppercase
+      </CardTitle>
+      <CardParagraph
+        $trimmedTo="word"
         component="p"
       >
         {paragraph}
-      </StyledCard.Paragraph>
-      <StyledCard.Datetime component="p">
+      </CardParagraph>
+      <CardDatetime component="p">
         <time dateTime={datetime}>{transformedDatetime}</time>
-      </StyledCard.Datetime>
-    </StyledCard.Container>
+      </CardDatetime>
+    </CardContainer>
   )
 }
 

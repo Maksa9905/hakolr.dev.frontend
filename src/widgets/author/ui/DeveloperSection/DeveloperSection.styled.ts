@@ -7,7 +7,6 @@ const Container = styled(Section)`
 
 const SkillsTypography = styled(Typography)`
   font-size: 12px;
-  line-height: 13px;
   min-width: 370px;
   color: ${({ theme }) => theme.palette.gray};
   text-transform: uppercase;

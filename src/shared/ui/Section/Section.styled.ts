@@ -26,5 +26,6 @@ export const SectionContent = styled.div`
 export const SectionTitle = styled(Typography)`
   font-size: 18px;
   font-weight: 400;
+  text-transform: uppercase;
   color: ${({ theme }) => theme.palette.gray};
 `

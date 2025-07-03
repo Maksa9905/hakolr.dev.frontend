@@ -16,7 +16,7 @@ const DeveloperSection = () => {
           label="опыта во фронте вцелом"
         />
       </S.DeveloperInfo>
-      <S.SkillsTypography>
+      <S.SkillsTypography $trimmedTo="word">
         react · react native · next · typescript · vite · effector · farfetched
         · redux · rtk query · styled-components · mui · tailwind · vitest ·
         testing library
