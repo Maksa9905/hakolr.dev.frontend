@@ -1,8 +1,15 @@
 import { InfoTitle, Section } from '@/shared/ui'
+import { SectionContent } from '@/shared/ui/Section/Section.styled'
 import styled from 'styled-components'
 
 const Container = styled(Section)`
   flex: 10;
+
+  ${SectionContent} {
+    @media (max-width: 1080px) {
+      gap: 8px;
+    }
+  }
 `
 
 const MusicInfoTitle = styled(InfoTitle)`

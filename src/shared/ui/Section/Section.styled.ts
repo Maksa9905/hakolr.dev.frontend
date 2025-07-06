@@ -17,10 +17,6 @@ export const SectionContent = styled.div`
   border: 2px dashed ${({ theme }) => theme.palette.black};
   height: 100%;
   box-sizing: border-box;
-
-  @media (max-width: 1080px) {
-    gap: 8px;
-  }
 `
 
 export const SectionTitle = styled(Typography)`

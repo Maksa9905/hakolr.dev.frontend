@@ -1,12 +1,16 @@
 'use client'
 
 import { InfoTitle } from '@/shared/ui'
-import S from './DeveloperSection.styled'
+import {
+  Container,
+  DeveloperInfo,
+  SkillsTypography,
+} from './DeveloperSection.styled'
 
 const DeveloperSection = () => {
   return (
-    <S.Container title="Разработка">
-      <S.DeveloperInfo>
+    <Container title="Разработка">
+      <DeveloperInfo>
         <InfoTitle
           value="1 год"
           label="коммерческого опыта во фронте"
@@ -15,13 +19,13 @@ const DeveloperSection = () => {
           value="1.5 года"
           label="опыта во фронте вцелом"
         />
-      </S.DeveloperInfo>
-      <S.SkillsTypography $trimmedTo="word">
+      </DeveloperInfo>
+      <SkillsTypography $trimmedTo="word">
         react · react native · next · typescript · vite · effector · farfetched
         · redux · rtk query · styled-components · mui · tailwind · vitest ·
         testing library
-      </S.SkillsTypography>
-    </S.Container>
+      </SkillsTypography>
+    </Container>
   )
 }
 
