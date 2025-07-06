@@ -22,7 +22,7 @@ export const TagSelectButton = styled.button<{ $selected?: boolean }>`
   border: 2px ${({ $selected }) => ($selected ? 'solid' : 'dashed')} ${({ theme }) => theme.palette.black};
   border-radius: 24px;
   background-color: ${({ $selected, theme }) =>
-    $selected ? theme.palette.primary : theme.palette.white};
+    $selected ? theme.palette.primary.main : theme.palette.white};
   color: ${({ $selected, theme }) =>
     $selected ? theme.palette.white : theme.palette.black};
 
@@ -50,6 +50,6 @@ export const TagSelectButton = styled.button<{ $selected?: boolean }>`
 export const TagSelectLabel = styled(Typography)`
   font-size: 18px;
   font-weight: 400;
-  color: ${({ theme }) => theme.palette.gray};
+  color: ${({ theme }) => theme.palette.gray.main};
   text-transform: uppercase;
 `

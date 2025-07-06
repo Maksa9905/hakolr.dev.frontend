@@ -15,7 +15,7 @@ export const Container = styled(Section)`
 export const SkillsTypography = styled(Typography)`
   font-size: 12px;
   min-width: 370px;
-  color: ${({ theme }) => theme.palette.gray};
+  color: ${({ theme }) => theme.palette.gray.main};
   text-transform: uppercase;
   text-align: justify;
 

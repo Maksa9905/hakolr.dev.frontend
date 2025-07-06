@@ -29,7 +29,7 @@ export const PublicationSectionLink = styled(Link)`
 
   &:hover {
     text-decoration: underline;
-    color: ${({ theme }) => theme.palette.primary};
+    color: ${({ theme }) => theme.palette.primary.main};
   }
 `
 

@@ -51,8 +51,7 @@ export const HeaderTitle = styled(Typography)`
 export const HeaderDescription = styled(Typography)`
   font-size: 24px;
   font-weight: 700;
-  color: ${({ theme }) => theme.palette.gray};
-  white-space: nowrap;
+  color: ${({ theme }) => theme.palette.gray.main};
 
   @media (max-width: 1080px) {
     font-size: 18px;

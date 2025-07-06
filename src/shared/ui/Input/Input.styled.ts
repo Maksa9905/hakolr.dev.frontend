@@ -21,7 +21,7 @@ export const StyledInput = styled.input`
 export const StyledLabel = styled(Typography)`
   text-transform: uppercase;
   font-size: 18px;
-  color: ${({ theme }) => theme.palette.gray};
+  color: ${({ theme }) => theme.palette.gray.main};
 `
 
 export const StyledInputContainer = styled.div`

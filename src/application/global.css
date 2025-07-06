@@ -33,3 +33,9 @@
   font-weight: 900;
   font-stretch: extra-expanded;
 }
+
+@font-face {
+  font-family: 'Martian Mono';
+  src: url('/fonts/MartianMono.ttf') format('truetype');
+  font-stretch: normal;
+}

@@ -74,5 +74,5 @@ export const CardDatetime = styled(Typography)`
   align-self: flex-end;
   font-size: 18px;
   font-weight: 400;
-  color: ${({ theme }) => theme.palette.gray};
+  color: ${({ theme }) => theme.palette.gray.main};
 `
