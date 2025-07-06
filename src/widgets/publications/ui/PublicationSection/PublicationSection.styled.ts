@@ -11,6 +11,10 @@ export const PublicationSectionContainer = styled(Section)<{ $flex?: number }>`
     css`
       flex: ${$flex};
     `}
+
+  @media (max-width: 480px) {
+    min-width: 250px;
+  }
 `
 
 export const PublicationSectionTitle = styled(Typography)`
