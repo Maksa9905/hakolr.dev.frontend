@@ -5,14 +5,17 @@ import {
   CardParagraph,
   CardTitle,
 } from './LatestPublicationSection.styled'
+import { Link } from '@/shared/ui'
 
 type LatestPublicationCardProps = {
+  id: string
   title: string
   paragraph: string
   datetime: string
 }
 
 const LatestPublicationCard = ({
+  id,
   title,
   paragraph,
   datetime,
@@ -25,7 +28,7 @@ const LatestPublicationCard = ({
         $trimmedTo="word"
         component="h3"
       >
-        {title}
+        <Link href={`/publications/${id}`}>{title}</Link>
       </CardTitle>
       <CardParagraph
         $trimmedTo="word"

@@ -5,7 +5,7 @@ import { Typography } from '@/shared/ui'
 import { SectionContent } from '@/shared/ui/Section'
 import styled from 'styled-components'
 
-const Container = styled(Section)`
+export const StyledContainer = styled(Section)`
   ${SectionContent} {
     justify-content: flex-start;
     gap: 28px;
@@ -19,14 +19,7 @@ const Container = styled(Section)`
   }
 `
 
-const Paragraph = styled(Typography)`
+export const StyledParagraph = styled(Typography)`
   font-size: 16px;
   line-height: 20px;
 `
-
-const StyledAboutSiteSection = {
-  Container,
-  Paragraph,
-}
-
-export default StyledAboutSiteSection

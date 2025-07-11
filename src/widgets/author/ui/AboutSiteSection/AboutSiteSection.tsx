@@ -1,28 +1,30 @@
 import { ContrastText } from '@/shared/ui'
-import S from './AboutSiteSection.styled'
+import { StyledContainer, StyledParagraph } from './AboutSiteSection.styled'
 
 const AboutSiteSection = () => {
   return (
-    <S.Container title="О сайте">
-      <S.Paragraph>
+    <StyledContainer title="О сайте">
+      <StyledParagraph>
         Этот сайт своего рода <ContrastText>протест против</ContrastText>{' '}
         привычных <ContrastText>телеграмм каналов</ContrastText> - для меня
         такой формат ведения личного блога не подходит.
-      </S.Paragraph>
-      <S.Paragraph>Я хочу дифференцировать контент для читателей:</S.Paragraph>
-      <S.Paragraph>
+      </StyledParagraph>
+      <StyledParagraph>
+        Я хочу дифференцировать контент для читателей:
+      </StyledParagraph>
+      <StyledParagraph>
         Те, кто интересуется музыкой читайте раздел{' '}
         <ContrastText>о музыке.</ContrastText>
-      </S.Paragraph>
-      <S.Paragraph>
+      </StyledParagraph>
+      <StyledParagraph>
         Кому нравится разработке - заходите в раздел{' '}
         <ContrastText>о разработке.</ContrastText>
-      </S.Paragraph>
-      <S.Paragraph>
+      </StyledParagraph>
+      <StyledParagraph>
         А тех, кто просто хочет почитать о тягостях жизни обычного студента из
         НН, заходите в <ContrastText>об авторе.</ContrastText>
-      </S.Paragraph>
-    </S.Container>
+      </StyledParagraph>
+    </StyledContainer>
   )
 }
 

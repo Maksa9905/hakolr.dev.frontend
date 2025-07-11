@@ -1,53 +1,31 @@
+'use client'
+
 import { PublicationSection } from '@/widgets/publications'
 import { PublicationsListContainer } from './PublicationsList.styled'
+import { PublicationsController } from '@/entities/publication/api/api'
+import { useQuery } from '@tanstack/react-query'
+import {
+  mapPublicationParams,
+  usePublicationsListQuery,
+} from '@/entities/publication'
+import { Typography } from '@/shared/ui'
 
 const PublicationsList = () => {
-  const publications = [
-    {
-      id: 1,
-      title: 'Моя первая публикация',
-      flex: 2,
-      tags: ['React', 'TypeScript'],
-      paragraph:
-        'Всем, привет! Я начинающий разработчик и это моя первая публикация. Давайте познакомимся! Меня зовут Макс, здесь я буду делиться своими мыслями и опытом. В этой статье я хочу рассказать о том, как я начал свою карьеру в разработке и какие шаги я предпринял для ее развития. ',
-    },
-    {
-      id: 2,
-      title: 'Моя вторая публикация',
-      flex: 1,
-      tags: ['React', 'TypeScript'],
-      paragraph:
-        'Всем, привет! Я начинающий разработчик и это моя вторая публикация. Давайте познакомимся! Меня зовут Макс, здесь я буду делиться своими мыслями и опытом. В этой статье я хочу рассказать о том, как я начал свою карьеру в разработке и какие шаги я предпринял для ее развития. ',
-    },
-    {
-      id: 3,
-      title: 'Моя третья публикация',
-      flex: 4,
-      tags: ['React', 'TypeScript'],
-      paragraph:
-        'Всем, привет! Я начинающий разработчик и это моя третья публикация. Давайте познакомимся! Меня зовут Макс, здесь я буду делиться своими мыслями и опытом. В этой статье я хочу рассказать о том, как я начал свою карьеру в разработке и какие шаги я предпринял для ее развития. ',
-    },
-    {
-      id: 4,
-      title: 'Моя четвертая публикация',
-      flex: 5,
-      tags: ['React', 'TypeScript'],
-      paragraph:
-        'Всем, привет! Я начинающий разработчик и это моя четвертая публикация. Давайте познакомимся! Меня зовут Макс, здесь я буду делиться своими мыслями и опытом. В этой статье я хочу рассказать о том, как я начал свою карьеру в разработке и какие шаги я предпринял для ее развития. ',
-    },
-    {
-      id: 5,
-      title: 'Моя пятая публикация',
-      flex: 2,
-      tags: ['React', 'TypeScript'],
-      paragraph:
-        'Всем, привет! Я начинающий разработчик и это моя пятая публикация. Давайте познакомимся! Меня зовут Макс, здесь я буду делиться своими мыслями и опытом. В этой статье я хочу рассказать о том, как я начал свою карьеру в разработке и какие шаги я предпринял для ее развития. ',
-    },
-  ]
+  const { query } = usePublicationsListQuery()
+
+  const { data: publications } = useQuery({
+    queryKey: ['publications', mapPublicationParams(query)],
+    queryFn: () =>
+      PublicationsController.getPublications(mapPublicationParams(query)),
+  })
+
+  if (publications?.data.length === 0) {
+    return <Typography>Публикации не найдены</Typography>
+  }
 
   return (
     <PublicationsListContainer>
-      {publications.map((publication) => (
+      {publications?.data.map((publication) => (
         <PublicationSection
           key={publication.id}
           {...publication}

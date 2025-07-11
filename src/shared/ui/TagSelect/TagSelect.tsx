@@ -1,49 +1,57 @@
 'use client'
 
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import {
   TagSelectButton,
   TagSelectContainer,
   TagSelectLabel,
   TagsListContainer,
 } from './TagSelect.styled'
+import { TagSelectProps, TagSelectValue } from './types'
 
-type TagSelectProps = {
-  label: string
-  tags: string[]
-  selectedTag: string
-  onTagSelect: (tag: string) => void
-}
-
-const TagSelect = ({
-  tags,
-  selectedTag,
-  onTagSelect,
+const TagSelect = <Multiple extends boolean | undefined = false>({
+  options,
+  value,
+  onChange,
   label,
-}: TagSelectProps) => {
+  multiple,
+}: TagSelectProps<Multiple>) => {
   const handleTagSelect = useCallback(
-    (tag: string) => {
-      if (tag === selectedTag) {
-        onTagSelect('')
-        return
+    (id: string) => {
+      if (multiple) {
+        onChange(
+          value.includes(id)
+            ? // @ts-expect-error if multiple is true, value is an array
+              (value.filter((v) => v !== id) as TagSelectValue<Multiple>)
+            : ([...value, id] as TagSelectValue<Multiple>),
+        )
+      } else {
+        if (value === id) {
+          onChange('' as TagSelectValue<Multiple>)
+        } else {
+          onChange(id as TagSelectValue<Multiple>)
+        }
       }
-
-      onTagSelect(tag)
     },
-    [onTagSelect, selectedTag],
+    [onChange, value, multiple],
   )
+
+  const values = useMemo(() => {
+    if (multiple) return value as TagSelectValue<Multiple>
+    return (value ? [value] : []) as TagSelectValue<Multiple>
+  }, [multiple, value])
 
   return (
     <TagSelectContainer>
       <TagSelectLabel as="label">{label}</TagSelectLabel>
       <TagsListContainer>
-        {tags.map((tag) => (
+        {options.map((option) => (
           <TagSelectButton
-            key={tag}
-            $selected={selectedTag === tag}
-            onClick={() => handleTagSelect(tag)}
+            key={option.id}
+            $selected={values.includes(option.id)}
+            onClick={() => handleTagSelect(option.id)}
           >
-            {tag}
+            {option.label}
           </TagSelectButton>
         ))}
       </TagsListContainer>

@@ -5,7 +5,7 @@ import { SectionContent } from '@/shared/ui/Section'
 import NextImage from 'next/image'
 import styled from 'styled-components'
 
-const Container = styled(Section)`
+export const StyledContainer = styled(Section)`
   ${SectionContent} {
     display: block;
   }
@@ -25,13 +25,13 @@ const Container = styled(Section)`
   }
 `
 
-const Title = styled(Typography)`
+export const StyledTitle = styled(Typography)`
   font-size: 48px;
   font-weight: 700;
   margin-bottom: 28px;
 `
 
-const Paragraph = styled(Typography)`
+export const StyledParagraph = styled(Typography)`
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 28px;
@@ -41,7 +41,7 @@ const Paragraph = styled(Typography)`
   }
 `
 
-const Image = styled(NextImage)`
+export const StyledImage = styled(NextImage)`
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -56,12 +56,3 @@ const Image = styled(NextImage)`
     grid-row: 3;
   }
 `
-
-const StyledAboutMeSection = {
-  Container,
-  Title,
-  Paragraph,
-  Image,
-}
-
-export default StyledAboutMeSection

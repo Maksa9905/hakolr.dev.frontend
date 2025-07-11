@@ -1,18 +1,20 @@
-'use client'
-
 import {
   AboutMeSection,
   AboutSiteSection,
   DeveloperSection,
   MusicSection,
 } from '@/widgets/author'
-import { LatestPublicationSection } from '@/widgets/publications'
+import { LatestPublicationsSection } from '@/widgets/publications'
 import { Header } from '@/widgets/header'
 import { PageContainer } from '@/widgets/page-container'
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query'
+import { prefetchMainPage } from '../../app/prefetch'
 
-const MainPage = () => {
+const MainPage = async () => {
+  const queryClient = await prefetchMainPage()
+
   return (
-    <>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       <Header
         title="Максим Гайворонский"
         description="Frontend-разработчик · Кавер-исполнитель"
@@ -22,9 +24,9 @@ const MainPage = () => {
         <MusicSection />
         <AboutMeSection />
         <AboutSiteSection />
-        <LatestPublicationSection />
+        <LatestPublicationsSection />
       </PageContainer>
-    </>
+    </HydrationBoundary>
   )
 }
 

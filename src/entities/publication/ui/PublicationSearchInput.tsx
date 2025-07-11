@@ -1,22 +1,22 @@
 'use client'
 
-import { Input } from '@/shared/ui'
-import { useState } from 'react'
+import { DebouncedInput } from '@/shared/ui'
+import { usePublicationsListQuery } from '../model/usePublicationsListQuery'
 
 type PublicationSearchInputProps = {
   className?: string
 }
 
 const PublicationSearchInput = ({ className }: PublicationSearchInputProps) => {
-  const [value, setValue] = useState('')
+  const { query, setQuery } = usePublicationsListQuery()
 
   return (
-    <Input
+    <DebouncedInput
       className={className}
       label="Поиск"
       placeholder="Best Practice создания кастомных алертов"
-      value={value}
-      onChange={setValue}
+      value={query.search ?? ''}
+      onChange={(value) => setQuery({ search: value || undefined })}
     />
   )
 }

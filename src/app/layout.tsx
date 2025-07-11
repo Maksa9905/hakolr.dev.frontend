@@ -1,3 +1,5 @@
+import { Providers } from './providers'
+
 import type { Metadata } from 'next'
 import StyledComponentsRegistry from '@/shared/lib/registry'
 import CommonLayout from '@/screens/RootLayout'
@@ -15,10 +17,12 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ru">
       <body style={{ fontFamily: 'Martian Grotesk' }}>
-        <StyledComponentsRegistry>
-          <CommonLayout>{children}</CommonLayout>
-          <RenderScanScript />
-        </StyledComponentsRegistry>
+        <Providers>
+          <StyledComponentsRegistry>
+            <CommonLayout>{children}</CommonLayout>
+            <RenderScanScript />
+          </StyledComponentsRegistry>
+        </Providers>
       </body>
     </html>
   )
