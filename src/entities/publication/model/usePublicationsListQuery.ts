@@ -1,16 +1,26 @@
 'use client'
 
-import { ArrayParam, StringParam, NumberParam } from 'use-query-params'
-import { withDefault } from 'use-query-params'
-import { useQueryParams } from 'use-query-params'
+import { QueryParamType, useQueryParams } from '@/shared/hooks'
 import { PublicationsListQueryParams } from './types'
 
 export const usePublicationsListQuery = () => {
   const [query, setQuery] = useQueryParams({
-    tagIds: withDefault(ArrayParam, []),
-    search: withDefault(StringParam, ''),
-    page: withDefault(NumberParam, 1),
-    limit: withDefault(NumberParam, 10),
+    tagIds: {
+      type: QueryParamType.ARRAY,
+      defaultValue: [],
+    },
+    search: {
+      type: QueryParamType.STRING,
+      defaultValue: '',
+    },
+    page: {
+      type: QueryParamType.NUMBER,
+      defaultValue: 1,
+    },
+    limit: {
+      type: QueryParamType.NUMBER,
+      defaultValue: 10,
+    },
   })
 
   return {

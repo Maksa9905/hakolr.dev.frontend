@@ -6,14 +6,17 @@ import CommonLayout from '@/screens/RootLayout'
 import { RenderScanScript } from '@/shared/ui/RenderScanScript/RenderScanScript'
 
 import '@/application/global.css'
-import { PropsWithChildren } from 'react'
+
+type RootLayoutProps = {
+  children: React.ReactNode
+}
 
 export const metadata: Metadata = {
   title: 'Максим Гайворонский',
   description: 'Разработчик веб-интерфейсов',
 }
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="ru">
       <body style={{ fontFamily: 'Martian Grotesk' }}>

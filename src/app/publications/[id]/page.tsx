@@ -3,13 +3,14 @@ import { HydrationBoundary } from '@tanstack/react-query'
 import { prefetchPublicationPage } from './prefetch'
 
 type PublicationPageProps = {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export default async function Page({ params }: PublicationPageProps) {
-  const state = await prefetchPublicationPage(params.id)
+  const { id } = await params
+  const state = await prefetchPublicationPage(id)
 
   return (
     <HydrationBoundary state={state}>

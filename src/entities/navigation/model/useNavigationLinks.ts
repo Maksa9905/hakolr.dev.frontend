@@ -1,10 +1,12 @@
 'use client'
 
+import { useAuthorized } from '@/shared/hooks'
 import { usePathname } from 'next/navigation'
 import { useMemo } from 'react'
 
 const useNavigationLinks = () => {
   const pathname = usePathname()
+  const authorized = useAuthorized()
 
   const links = useMemo(
     () => [
@@ -27,7 +29,16 @@ const useNavigationLinks = () => {
     [pathname],
   )
 
-  return links
+  if (!authorized) return links
+
+  return [
+    ...links,
+    {
+      label: 'Редактирование',
+      href: '/editing',
+      isActive: pathname === '/editing',
+    },
+  ]
 }
 
 export default useNavigationLinks
