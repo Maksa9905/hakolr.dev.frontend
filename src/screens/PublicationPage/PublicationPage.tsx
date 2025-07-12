@@ -17,14 +17,18 @@ const PublicationPage = () => {
     queryFn: () => PublicationsController.getPublication(id as string),
   })
 
+  if (!publication) {
+    return null
+  }
+
   return (
     <>
       <Header
-        title={publication!.title}
-        description={publication!.description}
+        title={publication.title}
+        description={publication.description}
       />
       <PageContainer>
-        <PublicationContent content={publication!.content} />
+        <PublicationContent content={publication.content} />
       </PageContainer>
     </>
   )

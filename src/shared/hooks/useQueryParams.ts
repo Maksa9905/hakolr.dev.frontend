@@ -62,7 +62,6 @@ export const useQueryParams = <
           ) as ParsedParams<T>[keyof T]
           break
         case QueryParamType.ARRAY:
-          // Поддерживаем как множественные параметры (?tags=tag1&tags=tag2), так и разделенные запятыми (?tags=tag1,tag2)
           const allValues = searchParams.getAll(key)
           if (allValues.length > 1) {
             result[key as keyof T] = allValues as ParsedParams<T>[keyof T]
@@ -110,15 +109,13 @@ export const useQueryParams = <
             }
             break
           case QueryParamType.ARRAY:
-            params.delete(key) // Удаляем все существующие значения
+            params.delete(key)
             const arrayValue = value as string[]
             if (
               arrayValue.length === 0 ||
               JSON.stringify(arrayValue) === JSON.stringify(config.defaultValue)
             ) {
-              // Не добавляем параметр если массив пустой или равен дефолтному значению
             } else {
-              // Добавляем каждый элемент массива как отдельный параметр
               arrayValue.forEach((item) => params.append(key, item))
             }
             break

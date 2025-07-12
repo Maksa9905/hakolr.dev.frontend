@@ -11,7 +11,11 @@ const LatestPublicationsSection = () => {
     queryFn: PublicationsController.getPublicationStatistics,
   })
 
-  const { latestPosts } = statistics!
+  if (!statistics) {
+    return null
+  }
+
+  const { latestPosts } = statistics
 
   return (
     <SectionContainer title="Свежее">

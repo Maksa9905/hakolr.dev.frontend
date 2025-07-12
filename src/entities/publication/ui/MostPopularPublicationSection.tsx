@@ -17,10 +17,15 @@ const MostPopularPublicationSection = () => {
   })
 
   const mostPopularTags = useMemo(() => {
-    return tags!.filter((tag) => tag.isMostPopular).map((tag) => tag.id)
+    if (!tags) return []
+    return tags.filter((tag) => tag.isMostPopular).map((tag) => tag.id)
   }, [tags])
 
-  const { mostPopularPost } = statistics!
+  if (!statistics) {
+    return null
+  }
+
+  const { mostPopularPost } = statistics
 
   return (
     <PublicationSection

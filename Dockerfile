@@ -17,6 +17,10 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
+# Устанавливаем переменные окружения для билда
+ENV JWT_SECRET=dummy_secret_for_build
+ENV NEXT_PUBLIC_API_URL=http://localhost:3000/api
+
 # Собираем приложение
 RUN npm run build
 

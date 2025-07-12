@@ -17,10 +17,15 @@ const MostLikedPublicationSection = () => {
   })
 
   const mostLikedTags = useMemo(() => {
-    return tags!.filter((tag) => tag.isMostLiked).map((tag) => tag.id)
+    if (!tags) return []
+    return tags.filter((tag) => tag.isMostLiked).map((tag) => tag.id)
   }, [tags])
 
-  const { mostLikedPost } = statistics!
+  if (!statistics) {
+    return null
+  }
+
+  const { mostLikedPost } = statistics
 
   return (
     <PublicationSection
