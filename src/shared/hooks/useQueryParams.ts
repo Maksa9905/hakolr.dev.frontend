@@ -1,7 +1,7 @@
 'use client'
 
-import { useSearchParams, useRouter } from 'next/navigation'
-import { useMemo, useCallback } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useMemo, useCallback, useState, useRef, useEffect } from 'react'
 
 export enum QueryParamType {
   STRING = 'string',
@@ -38,7 +38,19 @@ export const useQueryParams = <
   schema: T,
 ): [ParsedParams<T>, (updates: Partial<ParsedParams<T>>) => void] => {
   const searchParams = useSearchParams()
-  const router = useRouter()
+
+  const [pendingUpdates, setPendingUpdates] = useState<Partial<
+    ParsedParams<T>
+  > | null>(null)
+  const updateTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (updateTimeoutRef.current) {
+        clearTimeout(updateTimeoutRef.current)
+      }
+    }
+  }, [])
 
   const queryParams = useMemo(() => {
     const result = {} as ParsedParams<T>
@@ -80,55 +92,100 @@ export const useQueryParams = <
     return result
   }, [searchParams, schema])
 
+  const effectiveParams = useMemo(() => {
+    if (!pendingUpdates) return queryParams
+
+    return {
+      ...queryParams,
+      ...pendingUpdates,
+    } as ParsedParams<T>
+  }, [queryParams, pendingUpdates])
+
+  useEffect(() => {
+    if (pendingUpdates) {
+      const allUpdatesApplied = Object.entries(pendingUpdates).every(
+        ([key, value]) => {
+          const currentValue = queryParams[key as keyof T]
+
+          if (Array.isArray(value) && Array.isArray(currentValue)) {
+            return (
+              JSON.stringify(value.sort()) ===
+              JSON.stringify(currentValue.sort())
+            )
+          }
+
+          return currentValue === value
+        },
+      )
+
+      if (allUpdatesApplied) {
+        setPendingUpdates(null)
+      }
+    }
+  }, [queryParams, pendingUpdates])
+
   const setQueryParams = useCallback(
     (updates: Partial<ParsedParams<T>>) => {
-      const params = new URLSearchParams(searchParams.toString())
+      setPendingUpdates((prev) => ({
+        ...prev,
+        ...updates,
+      }))
 
-      for (const [key, value] of Object.entries(updates)) {
-        if (value === undefined || value === null) {
-          params.delete(key)
-          continue
-        }
-
-        const config = schema[key]
-        if (!config) continue
-
-        switch (config.type) {
-          case QueryParamType.STRING:
-            if (value === config.defaultValue) {
-              params.delete(key)
-            } else {
-              params.set(key, String(value))
-            }
-            break
-          case QueryParamType.NUMBER:
-            if (value === config.defaultValue) {
-              params.delete(key)
-            } else {
-              params.set(key, String(value))
-            }
-            break
-          case QueryParamType.ARRAY:
-            params.delete(key)
-            const arrayValue = value as string[]
-            if (
-              arrayValue.length === 0 ||
-              JSON.stringify(arrayValue) === JSON.stringify(config.defaultValue)
-            ) {
-            } else {
-              arrayValue.forEach((item) => params.append(key, item))
-            }
-            break
-        }
+      if (updateTimeoutRef.current) {
+        clearTimeout(updateTimeoutRef.current)
       }
 
-      const url = params.toString()
-        ? `?${params.toString()}`
-        : window.location.pathname
-      router.push(url)
+      updateTimeoutRef.current = setTimeout(() => {
+        const params = new URLSearchParams(searchParams.toString())
+
+        for (const [key, value] of Object.entries(updates)) {
+          if (value === undefined || value === null) {
+            params.delete(key)
+            continue
+          }
+
+          const config = schema[key]
+          if (!config) continue
+
+          switch (config.type) {
+            case QueryParamType.STRING:
+              if (value === config.defaultValue) {
+                params.delete(key)
+              } else {
+                params.set(key, String(value))
+              }
+              break
+            case QueryParamType.NUMBER:
+              if (value === config.defaultValue) {
+                params.delete(key)
+              } else {
+                params.set(key, String(value))
+              }
+              break
+            case QueryParamType.ARRAY:
+              params.delete(key)
+              const arrayValue = value as string[]
+              if (
+                arrayValue.length === 0 ||
+                JSON.stringify(arrayValue) ===
+                  JSON.stringify(config.defaultValue)
+              ) {
+              } else {
+                arrayValue.forEach((item) => params.append(key, item))
+              }
+              break
+          }
+        }
+
+        const url = params.toString()
+          ? `${window.location.pathname}?${params.toString()}`
+          : window.location.pathname
+
+        window.history.replaceState(null, '', url)
+      }, 100)
     },
-    [searchParams, router, schema],
+    [searchParams, schema],
   )
 
-  return [queryParams, setQueryParams]
+  return [effectiveParams, setQueryParams]
 }

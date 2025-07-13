@@ -17,6 +17,7 @@ const PublicationsList = () => {
     queryKey: ['publications', mapPublicationParams(query)],
     queryFn: () =>
       PublicationsController.getPublications(mapPublicationParams(query)),
+    placeholderData: (previousData) => previousData,
   })
 
   if (publications?.data.length === 0) {
