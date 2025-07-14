@@ -1,10 +1,17 @@
 'use client'
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Typography } from '..'
 
-export const StyledInput = styled.input`
-  height: 50px;
+const multilineStyles = css`
+  min-height: 100px;
+  padding-top: 8px;
+
+  resize: vertical;
+`
+
+export const StyledInput = styled.input<{ $multiline?: boolean }>`
+  min-height: 50px;
   width: 100%;
   border: 2px dashed ${({ theme }) => theme.palette.black};
   padding-left: 16px;
@@ -16,6 +23,8 @@ export const StyledInput = styled.input`
   &:focus {
     outline: none;
   }
+
+  ${({ $multiline }) => $multiline && multilineStyles}
 `
 
 export const StyledLabel = styled(Typography)`

@@ -12,6 +12,7 @@ import { Link } from '@/shared/ui'
 
 type PublicationSectionProps = {
   className?: string
+  isEditing?: boolean
   tagIds: string[]
   title: string
   paragraph: string
@@ -21,6 +22,7 @@ type PublicationSectionProps = {
 
 const PublicationSection = ({
   className,
+  isEditing,
   tagIds,
   title,
   size,
@@ -38,6 +40,11 @@ const PublicationSection = ({
     [tags, tagIds],
   )
 
+  const link = useMemo(
+    () => (isEditing ? `/editing/${id}` : `/publications/${id}`),
+    [isEditing, id],
+  )
+
   return (
     <PublicationSectionContainer
       className={className}
@@ -49,7 +56,7 @@ const PublicationSection = ({
         $trimmedTo="word"
         component="h3"
       >
-        <Link href={`/publications/${id}`}>{title}</Link>
+        <Link href={link}>{title}</Link>
       </PublicationSectionTitle>
       <PublicationSectionParagraph>{paragraph}</PublicationSectionParagraph>
     </PublicationSectionContainer>

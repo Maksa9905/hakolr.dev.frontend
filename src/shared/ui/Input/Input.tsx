@@ -9,6 +9,7 @@ type InputProps = {
   value: string
   onChange: (value: string) => void
   className?: string
+  multiline?: boolean
 }
 
 const Input = ({
@@ -17,6 +18,7 @@ const Input = ({
   value,
   onChange,
   className,
+  multiline,
 }: InputProps) => {
   const id = useId()
 
@@ -32,7 +34,11 @@ const Input = ({
         placeholder={placeholder}
         id={id}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChange(e.target.value)
+        }
+        $multiline={multiline}
+        as={multiline ? 'textarea' : 'input'}
       />
     </StyledInputContainer>
   )

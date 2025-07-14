@@ -31,3 +31,11 @@ export type PublicationStatisticsResponse = {
   mostPopularPost: PublicationResponse
   mostLikedPost: PublicationResponse
 }
+
+export type CreatePublicationParams = {
+  title: string
+  description: string
+  paragraph: string
+  content: string
+  tagIds: string[]
+}

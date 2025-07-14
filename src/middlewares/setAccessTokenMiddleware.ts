@@ -19,7 +19,7 @@ export const setAccessTokenMiddleware: MiddlewareFactory = (next) => {
     // Получаем токен из query параметров
     const url = new URL(request.url)
     const searchParams = url.searchParams
-    const token = searchParams.get('token')
+    const token = searchParams.get('access')
 
     // Если токена нет в query, передаем управление дальше
     if (!token) {

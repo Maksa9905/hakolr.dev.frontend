@@ -1,10 +1,12 @@
 import { ApiController, ApiWithMetaResponse } from '@/shared/api'
 import {
+  CreatePublicationParams,
   GetPublicationsParams,
   PublicationResponse,
   PublicationStatisticsResponse,
   PublicationTagResponse,
 } from './types'
+import { cookies } from '@/shared/lib'
 
 export class PublicationsController {
   static async getPublicationsTags() {
@@ -36,6 +38,35 @@ export class PublicationsController {
   static async getPublication(id: string) {
     return await ApiController.call<PublicationResponse>(`posts/${id}`, {
       method: 'GET',
+    })
+  }
+
+  static async updatePublication(id: string, data: CreatePublicationParams) {
+    return await ApiController.call<PublicationResponse>(`posts/${id}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${cookies().get('token')}`,
+      },
+      data,
+    })
+  }
+
+  static async deletePublication(id: string) {
+    return await ApiController.call<PublicationResponse>(`posts/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${cookies().get('token')}`,
+      },
+    })
+  }
+
+  static async createPublication(data: CreatePublicationParams) {
+    return await ApiController.call<PublicationResponse>('posts', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${cookies().get('token')}`,
+      },
+      data,
     })
   }
 }

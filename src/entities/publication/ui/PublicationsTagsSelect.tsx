@@ -1,22 +1,12 @@
 'use client'
 
 import { TagSelect } from '@/shared/ui'
-import { useQuery } from '@tanstack/react-query'
-import { PublicationsController } from '../api/api'
-import { useMemo } from 'react'
 import { usePublicationsListQuery } from '../model/usePublicationsListQuery'
+import { useTagsOptions } from '../model/useTagsOptions'
 
 const PublicationsTagsSelect = () => {
   const { query, setQuery } = usePublicationsListQuery()
-
-  const { data: tags } = useQuery({
-    queryKey: ['publications-tags'],
-    queryFn: PublicationsController.getPublicationsTags,
-  })
-
-  const options = useMemo(() => {
-    return tags?.filter((tag) => !tag.isMostPopular && !tag.isMostLiked) || []
-  }, [tags])
+  const { options } = useTagsOptions()
 
   return (
     <TagSelect

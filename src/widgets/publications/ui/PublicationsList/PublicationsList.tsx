@@ -10,7 +10,11 @@ import {
 } from '@/entities/publication'
 import { Typography } from '@/shared/ui'
 
-const PublicationsList = () => {
+type PublicationsListProps = {
+  isEditing?: boolean
+}
+
+const PublicationsList = ({ isEditing }: PublicationsListProps) => {
   const { query } = usePublicationsListQuery()
 
   const { data: publications } = useQuery({
@@ -28,6 +32,7 @@ const PublicationsList = () => {
     <PublicationsListContainer>
       {publications?.data.map((publication) => (
         <PublicationSection
+          isEditing={isEditing}
           key={publication.id}
           {...publication}
         />
