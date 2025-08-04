@@ -1,8 +1,13 @@
 import { checkAccessTokenMiddleware } from './middlewares/checkAccessTokemMiddleware'
+import { getPathnameMiddleware } from './middlewares/getPathnameMiddleware'
 import { setAccessTokenMiddleware } from './middlewares/setAccessTokenMiddleware'
 import { stackMiddlewares } from './middlewares/stackHandler'
 
-const middlewares = [setAccessTokenMiddleware, checkAccessTokenMiddleware]
+const middlewares = [
+  getPathnameMiddleware,
+  setAccessTokenMiddleware,
+  checkAccessTokenMiddleware,
+]
 export default stackMiddlewares(middlewares)
 
 export const config = {

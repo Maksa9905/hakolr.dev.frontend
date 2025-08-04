@@ -52,8 +52,8 @@ const InitializedMDXEditor = ({
               codeBlockLanguages: {
                 ts: 'TypeScript',
                 css: 'CSS',
-                tsx: 'TypeScript',
-                jsx: 'JavaScript',
+                tsx: 'React TSX',
+                jsx: 'React JSX',
                 html: 'HTML',
               },
             }),

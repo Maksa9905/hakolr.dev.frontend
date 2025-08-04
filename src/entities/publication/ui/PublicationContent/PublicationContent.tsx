@@ -53,6 +53,8 @@ const PublicationContent = ({ content }: PublicationContentProps) => {
       </Markdown>
     </PublicationContentContainer>
   )
+
+  return null
 }
 
 export default PublicationContent

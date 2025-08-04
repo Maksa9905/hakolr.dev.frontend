@@ -1,6 +1,5 @@
 import { Providers } from './providers'
 
-import type { Metadata } from 'next'
 import StyledComponentsRegistry from '@/shared/lib/registry'
 import CommonLayout from '@/screens/RootLayout'
 import { RenderScanScript } from '@/shared/ui/RenderScanScript/RenderScanScript'
@@ -11,9 +10,11 @@ type RootLayoutProps = {
   children: React.ReactNode
 }
 
-export const metadata: Metadata = {
-  title: 'Максим Гайворонский',
-  description: 'Разработчик веб-интерфейсов',
+export async function generateMetadata() {
+  return {
+    title: 'Максим Гайворонский',
+    description: 'Разработчик веб-интерфейсов',
+  }
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
