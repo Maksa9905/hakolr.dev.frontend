@@ -5,21 +5,18 @@ import { prefetchPublicationsPage } from './prefetch'
 import {
   PublicationsController,
   PublicationsListQueryParams,
+  mapPublicationParams,
 } from '@/entities/publication'
 
 type PageProps = {
   searchParams: Promise<PublicationsListQueryParams>
 }
 
-export const generateMetadata = async (
-  params: Promise<{ page: number; limit: number; search: string }>,
-) => {
-  const { page, limit, search } = await params
-  const publications = await PublicationsController.getPublications({
-    page,
-    limit,
-    search,
-  })
+export async function generateMetadata({ searchParams }: PageProps) {
+  const params = await searchParams
+  const publications = await PublicationsController.getPublications(
+    mapPublicationParams(params),
+  )
 
   const publicationsTitles = publications.data.map(
     (publication) => publication.title,
