@@ -5,6 +5,8 @@ import CommonLayout from '@/screens/RootLayout'
 import { RenderScanScript } from '@/shared/ui/RenderScanScript/RenderScanScript'
 
 import '@/application/global.css'
+import { Viewport } from 'next'
+import { theme } from '@/application/theme'
 
 type RootLayoutProps = {
   children: React.ReactNode
@@ -15,6 +17,13 @@ export async function generateMetadata() {
     title: 'Максим Гайворонский',
     description: 'Разработчик веб-интерфейсов',
   }
+}
+
+export const viewport: Viewport = {
+  themeColor: theme.palette.black,
+  width: 'device-width',
+  viewportFit: 'cover',
+  interactiveWidget: 'resizes-content',
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
